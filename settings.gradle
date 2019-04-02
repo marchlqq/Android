@@ -1,1 +1,1 @@
-include ':app', ':Frameworks:utils', ':widget'
+include ':app', ':Frameworks:utils', ':Frameworks:widget'
