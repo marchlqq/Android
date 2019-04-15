@@ -1,1 +1,14 @@
-include ':app', ':Frameworks:utils', ':Frameworks:widget'
+include ':app', ':Frameworks:utils', ':Frameworks:widget', ':Frameworks:library'
+
+// 高清图原图预览，支持放大、缩小、左右滑动查看，app
+include ':Business:largeImageApp'
+
+// 高清图原图预览，支持放大、缩小、左右滑动查看
+include ':Frameworks:largeimage'
+// view page 定制
+include ':Frameworks:viewPageIndicator'
+// 圆形加载器
+include ':Frameworks:ringProgressBar'
+
+
+include ':largeBitmap', ':picapp'
