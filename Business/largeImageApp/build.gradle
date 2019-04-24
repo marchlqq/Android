@@ -16,6 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    repositories {
+        //添加一个本地仓库，并把libs目录作为仓库的地址
+        flatDir {
+            dirs '../../Business/largeImageApp/libs', 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -50,7 +57,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.0.0'
 
 //    compile 'com.github.HotBitmapGG:RingProgressBar:V1.2.2'
-    implementation project(':Frameworks:largeimage')
+//    implementation project(':Frameworks:largeimage')
+    api(name: 'largeimage-release', ext:'aar')
+
     implementation project(':Frameworks:viewPageIndicator')
     implementation project(':Frameworks:ringProgressBar')
 
