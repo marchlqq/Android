@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">AndroidFrame</string>
+	<string name="app_various_common_loading_boxes">Various common loading boxes</string>
+	<string name="app_project_common_setting">Project common settings</string>
+
+</resources>
