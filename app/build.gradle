@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -16,7 +18,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    repositories {
+        //添加一个本地仓库，并把libs目录作为仓库的地址
+        flatDir {
+            dirs '../Frameworks/sdk/libs', 'libs'
+        }
+    }
 }
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -24,5 +35,8 @@ dependencies {
     implementation project(':Frameworks:utils')
 
     implementation project(':Frameworks:library')
+    implementation project(':Frameworks:widget')
     implementation project(':switchlanguage')
+    implementation project(':Frameworks:sdk')
+
 }

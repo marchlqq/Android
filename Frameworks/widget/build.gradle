@@ -1,7 +1,55 @@
 apply plugin: 'com.android.library'
 
+//apply plugin: 'maven'
+//
+//uploadArchives{
+//    repositories.mavenDeployer{
+//        // 配置本地仓库路径，项目根目录下的repository目录中
+//        repository(url: uri('../repository'))
+//        pom.groupId = "com.hh.lib.widget"// 唯一标识（通常为模块包名，也可以任意）
+//        pom.artifactId = "haohua" // 项目名称（通常为类库模块名称，也可以任意）
+//        pom.version = "1.0.0" // 版本号
+//    }
+//}
+
+/**②.发布到私有服务器maven仓库*/
+apply plugin: 'maven'
+
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    print(android.sourceSets.main.java.srcDirs)
+    print(androidSourcesJar)
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+artifacts {
+    archives androidSourcesJar
+}
+//上传到Maven仓库的task
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //指定maven仓库url
+
+//            repository(url: "http://172.16.44.213:8081/repository/maven-public/") {
+
+//            repository(url: "http://172.16.44.213:8081/repository/maven-releases/") {
+            repository(url: "fill:///Users/80262786/.m2/repository/") {
+                //nexus登录默认用户名和密码
+//                authentication(userName: "mahaohua", password: "mahaohua")
+            }
+                    pom.groupId = "com.hh.lib.widget"// 唯一标识（通常为模块包名，也可以任意）
+        pom.artifactId = "haohua" // 项目名称（通常为类库模块名称，也可以任意）
+//            pom.groupId = "com.openxu.viewlib"// 唯一标识（通常为模块包名，也可以任意）
+//            pom.artifactId = "OXViewLib" // 项目名称（通常为类库模块名称，也可以任意）
+            pom.version = "1.0.4" // 版本号
+        }
+    }
+}
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
 
 
 
@@ -25,10 +73,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
